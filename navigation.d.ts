@@ -1,7 +1,8 @@
-import { BottomTabRootParamList } from "./src/navigation/types";
+import { BottomTabRootParamList, DrawerRootParamList } from "./src/navigation/types";
 
 declare global {
   namespace ReactNavigation {
     interface RootParamList extends BottomTabRootParamList{}
+    interface RootParamList extends DrawerRootParamList{}
   }
 }
