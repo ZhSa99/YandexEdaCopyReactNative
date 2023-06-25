@@ -3,8 +3,6 @@ import {
 	ImageSourcePropType,
 	ImageStyle,
 	StyleSheet,
-	Text,
-	TextStyle,
 	View,
 	ViewStyle,
 } from 'react-native'
@@ -15,21 +13,19 @@ interface ICustomIcon {
 	source: ImageSourcePropType
 	containerStyle?: ViewStyle
 	iconStyle?: ImageStyle
-	hasLabel?: boolean
-	labelStyle?: TextStyle
 }
 
 const CustomIcon = ({
 	source = require('../../assets/icons/user_logo.png'),
-	containerStyle = {},
-	iconStyle = {},
-	hasLabel = true,
-	labelStyle = {},
+	containerStyle,
+	iconStyle,
 }: ICustomIcon) => {
 	return (
-		<View style={[styles.containerStyleDefault, containerStyle]}>
-			<Image source={source} style={[styles.iconStyleDefault, iconStyle]} />
-			{}
+		<View style={{...styles.containerStyleDefault, ...containerStyle}}>
+			<Image
+				source={source}
+				style={{ ...styles.containerStyleDefault, ...iconStyle }}
+			/>
 		</View>
 	)
 }
@@ -38,13 +34,14 @@ export default CustomIcon
 
 const styles = StyleSheet.create({
 	containerStyleDefault: {
+		width: scale(28),
+		height: verticalScale(28),
 		alignItems: 'center',
 		justifyContent: 'center',
-    backgroundColor: 'red'
+		bottom: verticalScale(-2)
 	},
 	iconStyleDefault: {
-		width: scale(10),
-		height: verticalScale(10),
 		tintColor: 'black',
+		resizeMode: 'cover'
 	},
 })
