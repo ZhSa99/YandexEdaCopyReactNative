@@ -9,11 +9,14 @@ const Drawer = createDrawerNavigator<DrawerRootParamList>()
 
 const DrawerNavigation = () => {
   return (
-    <Drawer.Navigator>
-      <Drawer.Screen name='OrdersList' component={OrdersScreen}/>
-      <Drawer.Screen name='BottomTabNavigation' component={BottomTabNavigation}/>
-    </Drawer.Navigator>
-  )
+		<Drawer.Navigator screenOptions={{ swipeEnabled: false }}>
+			<Drawer.Screen
+				name="BottomTabNavigation"
+				component={BottomTabNavigation}
+			/>
+			<Drawer.Screen name="OrdersList" component={OrdersScreen} />
+		</Drawer.Navigator>
+	)
 }
 
 export default DrawerNavigation
