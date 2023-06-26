@@ -8,4 +8,10 @@ export const bottomTabColors = {
 	sceneBackgroundColor: '#191918',
 }
 
+export const drawerColors = {
+	headerBackgroundColor: '#191918',
+}
+
 export const tabBarBackgroundColor = '#41413e'
+
+export const YANDEX_BONUS_GRADIENT_COLORS = ['#f85568', '#555cf6']
