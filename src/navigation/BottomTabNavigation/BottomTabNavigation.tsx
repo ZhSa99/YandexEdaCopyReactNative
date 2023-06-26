@@ -49,10 +49,12 @@ const BottomTabNavigation = () => {
 					height: verticalScale(bottomTabElemSizes.bottomNavigatorHeight),
 					paddingLeft: scale(10),
 					paddingRight: scale(10),
-					borderTopWidth: 0
+					borderTopWidth: 0,
 				},
 			}}
-			sceneContainerStyle={{backgroundColor: bottomTabColors.sceneBackgroundColor}}
+			sceneContainerStyle={{
+				backgroundColor: bottomTabColors.sceneBackgroundColor,
+			}}
 		>
 			<BottomTab.Screen
 				name={'MainScreen'}
