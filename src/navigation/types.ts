@@ -6,6 +6,12 @@ export type BottomTabRootParamList ={
 }
 
 export type DrawerRootParamList = {
-  BottomTabNavigation: undefined
-  OrdersList: undefined
+	BottomTabNavigation: undefined
+	OrdersList: undefined
+	ProfileScreen: undefined
+	PromocodesScreen: undefined
+	AddressesScreen: undefined
+	AboutServiceScreen: undefined
+	BecomeCourierScreen: undefined
+	FoodForBusinessScreen: undefined
 }
