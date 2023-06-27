@@ -16,7 +16,7 @@ interface ICustomIcon {
 }
 
 const CustomIcon = ({
-	source = require('../../assets/icons/user_logo.png'),
+	source = require('../../assets/icons/user_icon.png'),
 	containerStyle,
 	iconStyle,
 }: ICustomIcon) => {
@@ -35,13 +35,15 @@ export default CustomIcon
 const styles = StyleSheet.create({
 	containerStyleDefault: {
 		width: scale(28),
-		height: verticalScale(28),
+		height: verticalScale(24),
 		alignItems: 'center',
 		justifyContent: 'center',
-		bottom: verticalScale(-2)
+
 	},
 	iconStyleDefault: {
+		width: scale(20),
+		height: verticalScale(20),
 		tintColor: 'black',
-		resizeMode: 'cover'
+		resizeMode: 'cover',
 	},
 })
