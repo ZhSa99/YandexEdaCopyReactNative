@@ -1,5 +1,5 @@
 import { StyleSheet, Text, TextStyle, View } from 'react-native'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { BottomTabRootParamList } from '../types'
 import MainScreen from '../../screens/MainScreen/MainScreen'
@@ -11,10 +11,17 @@ import { scale, verticalScale } from 'react-native-size-matters'
 import CustomIcon from '../../customElements/CustomIcon'
 import { bottomTabColors, buttonColors } from '../../utils/colors'
 import { bottomTabElemSizes } from '../../utils/globalConstants'
+import { BasketScreen_ICON, MainScreen_ICON, RestaurantsScreen_ICON, ShopsScreen_ICON } from '../../utils/iconsPaths'
+import { useDrawerProgress, useDrawerStatus } from '@react-navigation/drawer'
+import { NavigationProp, useNavigation } from '@react-navigation/native'
 
 const BottomTab = createBottomTabNavigator<BottomTabRootParamList>()
 
-const BottomTabNavigation = () => {
+const BottomTabNavigation = ({
+	navigation,
+}: {
+	navigation: NavigationProp<ReactNavigation.RootParamList>
+}) => {
 	const getColor = (focused: boolean) => {
 		return focused ? buttonColors.activeColor : buttonColors.inactiveColor
 	}
@@ -40,6 +47,17 @@ const BottomTabNavigation = () => {
 		)
 	}
 
+	const [swipeEnabled, setSwipeEnabled] = useState(false)
+	const drawer = useDrawerStatus()
+	
+	useEffect(() => {
+		navigation.setOptions({headerShown: true})
+	}, [])
+	useEffect(() => {
+
+		navigation.setOptions({ swipeEnabled: drawer == 'open' ? true : false })
+	}, [drawer])
+
 	return (
 		<BottomTab.Navigator
 			screenOptions={{
@@ -63,7 +81,7 @@ const BottomTabNavigation = () => {
 					tabBarIcon: ({ focused }) => {
 						return (
 							<CustomIcon
-								source={require('../../../assets/icons/mainScreen_logo.png')}
+								source={MainScreen_ICON}
 								iconStyle={{
 									tintColor: focused
 										? buttonColors.activeColor
@@ -86,7 +104,7 @@ const BottomTabNavigation = () => {
 					tabBarIcon: ({ focused }) => {
 						return (
 							<CustomIcon
-								source={require('../../../assets/icons/restaurantsScreen_logo.png')}
+								source={RestaurantsScreen_ICON}
 								iconStyle={{
 									tintColor: focused
 										? buttonColors.activeColor
@@ -109,7 +127,7 @@ const BottomTabNavigation = () => {
 					tabBarIcon: ({ focused }) => {
 						return (
 							<CustomIcon
-								source={require('../../../assets/icons/shopsScreen_logo.png')}
+								source={ShopsScreen_ICON}
 								iconStyle={{
 									tintColor: focused
 										? buttonColors.activeColor
@@ -132,7 +150,7 @@ const BottomTabNavigation = () => {
 					tabBarIcon: ({ focused }) => {
 						return (
 							<CustomIcon
-								source={require('../../../assets/icons/basketScreen_logo.png')}
+								source={BasketScreen_ICON}
 								iconStyle={{
 									tintColor: focused
 										? buttonColors.activeColor
