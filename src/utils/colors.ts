@@ -10,6 +10,14 @@ export const bottomTabColors = {
 
 export const drawerColors = {
 	headerBackgroundColor: '#191918',
+	titleColor: '#8d8c89',
+	textColor: '#e0deda',
+}
+
+//Colors for screens. For ex (OrdersScreen, ProfileScreen
+//
+export const screensColor = {
+	textColor: '#e0deda',
 }
 
 export const tabBarBackgroundColor = '#41413e'
