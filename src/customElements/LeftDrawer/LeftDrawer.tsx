@@ -1,25 +1,12 @@
-import {
-	Animated,
-	Button,
-	Pressable,
-	SafeAreaView,
-	StyleSheet,
-	Text,
-	View,
-} from 'react-native'
-import React, { ForwardedRef, useContext, useEffect, useRef } from 'react'
+import { Animated, Pressable, SafeAreaView, StyleSheet } from 'react-native'
+import React, { useContext, useEffect, useRef } from 'react'
 import { scale } from 'react-native-size-matters'
 import { stackColors } from '../../utils/colors'
 import { DrawerContext } from '../../context/DrawerContext/DrawerContext'
-import ReAnimated, {
-	useAnimatedStyle,
-	useSharedValue,
-	withTiming,
-} from 'react-native-reanimated'
-import { StackRootParamList } from '../../navigation/types'
-import { NavigationContainerRef } from '@react-navigation/native'
 import YandexEdaTitleIcon from '../YandexEdaTitleIcon'
 import ScreensList from './components/ScreensList'
+import { NavigationContext } from '../../context/NavigationContext/NavigationContext'
+import TechSupportButton from './components/TechSupportButton'
 
 const AnimatedPressable = Animated.createAnimatedComponent(Pressable)
 
@@ -27,8 +14,6 @@ const LeftDrawer = React.forwardRef((props, ref) => {
 	const { setDrawerIsOpen, drawerIsOpen } = useContext(DrawerContext)
 	const scrollX = useRef(new Animated.Value(0)).current
 	const zIndex = useRef(new Animated.Value(0)).current
-
-	const zIndexProgress = useSharedValue(0)
 
 	useEffect(() => {
 		Animated.timing(scrollX, {
@@ -65,9 +50,12 @@ const LeftDrawer = React.forwardRef((props, ref) => {
 					alignItems: 'center',
 				}}
 			>
+				
 				<YandexEdaTitleIcon />
 
-				<ScreensList/>
+				<ScreensList />
+
+				<TechSupportButton />
 			</SafeAreaView>
 
 			{/*INVISIBLE ELEM */}
