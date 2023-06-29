@@ -11,7 +11,7 @@ import { AntDesign } from '@expo/vector-icons'
 import { BottomTabRootParamList, StackRootParamList } from '../../navigation/types'
 import { DrawerContext } from '../../context/DrawerContext/DrawerContext'
 
-const MainHeader = () => {
+const MainHeader = ({}) => {
 	const {setDrawerIsOpen} = useContext(DrawerContext)
 	return (
 		<SafeAreaView
