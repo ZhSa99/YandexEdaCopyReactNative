@@ -1,12 +1,16 @@
-import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import { Animated, StyleSheet, Text, View } from 'react-native'
+import React, { useRef } from 'react'
+import DrawerScreensHeader from '../../customElements/StackScreensHeader'
 
 const ProfileScreen = () => {
   return (
-    <View>
-      <Text>ProfileScreen</Text>
-    </View>
-  )
+		<View>
+			<DrawerScreensHeader
+				isScrollView={false}
+				label="Профиль"
+			/>
+		</View>
+	)
 }
 
 export default ProfileScreen

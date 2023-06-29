@@ -1,6 +1,8 @@
 node_modules/
 .expo/
 dist/
+assets/
+assets/icons/
 npm-debug.*
 *.jks
 *.p8
@@ -15,3 +17,19 @@ web-build/
 
 # Temporary files created by Metro to check the health of the file watcher
 .metro-health-check*
+assets/icons/aboutService_icon.png
+assets/icons/addresses_icon.png
+assets/icons/becomeCourier_icon.png
+assets/icons/burger_icon.png
+assets/icons/delivery_logo.png
+assets/icons/emptyBasket_icon.png
+assets/icons/filters_icon.png
+assets/icons/foodForBusiness_icon.png
+assets/icons/orders_icon.png
+assets/icons/pizza_icon.png
+assets/icons/profile_icon.png
+assets/icons/promocodes_icon.png
+assets/icons/support_icon.png
+assets/icons/sushi_icon.png
+assets/icons/yandexEda_main_logo.png
+assets/icons/yandexPlus_icon.png

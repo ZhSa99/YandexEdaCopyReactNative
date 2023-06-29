@@ -25,6 +25,7 @@ const CustomIcon = ({
 			<Image
 				source={source}
 				style={{ ...styles.containerStyleDefault, ...iconStyle }}
+				resizeMode='contain'
 			/>
 		</View>
 	)
