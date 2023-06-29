@@ -1,12 +1,17 @@
-import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import { Animated, StyleSheet, Text, View } from 'react-native'
+import React, { useRef } from 'react'
+import StackScreensHeader from '../../customElements/StackScreensHeader'
+import { stackColors } from '../../utils/colors'
+import ViewContainer from '../../customElements/ViewContainer/ViewContainer'
+import { screenNames_RU } from '../../utils/screenLabels'
 
 const PromocodesScreen = () => {
-  return (
-    <View>
-      <Text>PromocodesScreen</Text>
-    </View>
-  )
+
+	return (
+		<ViewContainer isScrollView label={screenNames_RU.promocodes}>
+
+    </ViewContainer>
+	)
 }
 
 export default PromocodesScreen

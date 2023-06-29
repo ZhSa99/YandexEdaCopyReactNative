@@ -1,33 +1,14 @@
-import { Animated, Dimensions, ScrollView, StyleSheet, Text, View } from 'react-native'
-import React, { useRef } from 'react'
-import DrawerScreensHeader from '../../customElements/StackScreensHeader'
-import { stackColors } from '../../utils/colors'
-import { useNavigation } from '@react-navigation/native'
+import { StyleSheet } from 'react-native'
+import React from 'react'
+import ViewContainer from '../../customElements/ViewContainer/ViewContainer'
+import { screenNames_RU } from '../../utils/screenLabels'
 
+ 
 const OrdersScreen = () => {
-  const scrollY = useRef(new Animated.Value(0)).current
-
 	return (
-		<View
-			style={{
-				width: '100%',
-				height: '100%',
-				backgroundColor: stackColors.headerBackgroundColor,
-			}}
-		>
-			<DrawerScreensHeader
-				isScrollView={true}
-				scrollY={scrollY}
-				label="Заказы"
-			/>
-			<Animated.ScrollView
-				style={{ width: '100%' }}
-				onScroll={Animated.event(
-					[{ nativeEvent: { contentOffset: { y: scrollY } } }],
-					{ useNativeDriver: true }
-				)}
-			></Animated.ScrollView>
-		</View>
+		<ViewContainer isScrollView label={screenNames_RU.ordersList}>
+
+		</ViewContainer>
 	)
 }
 

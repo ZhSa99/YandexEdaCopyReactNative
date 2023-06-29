@@ -1,15 +1,14 @@
 import { Animated, StyleSheet, Text, View } from 'react-native'
 import React, { useRef } from 'react'
 import DrawerScreensHeader from '../../customElements/StackScreensHeader'
+import ViewContainer from '../../customElements/ViewContainer/ViewContainer'
+import { screenNames_RU } from '../../utils/screenLabels'
 
 const ProfileScreen = () => {
   return (
-		<View>
-			<DrawerScreensHeader
-				isScrollView={false}
-				label="Профиль"
-			/>
-		</View>
+		<ViewContainer label={screenNames_RU.profile}>
+
+		</ViewContainer>
 	)
 }
 
