@@ -5,9 +5,9 @@ export type BottomTabRootParamList ={
   BasketScreen: undefined
 }
 
-export type DrawerRootParamList = {
+export type StackRootParamList = {
 	BottomTabNavigation: undefined
-	OrdersList: undefined
+	OrdersListScreen: undefined
 	ProfileScreen: undefined
 	PromocodesScreen: undefined
 	AddressesScreen: undefined

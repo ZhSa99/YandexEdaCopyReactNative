@@ -8,7 +8,7 @@ export const bottomTabColors = {
 	sceneBackgroundColor: '#191918',
 }
 
-export const drawerColors = {
+export const stackColors = {
 	headerBackgroundColor: '#191918',
 	titleColor: '#8d8c89',
 	textColor: '#e0deda',

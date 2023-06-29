@@ -8,12 +8,12 @@ import {
 	ScrollView,
 } from 'react-native'
 import React from 'react'
-import { drawerColors, screensColor } from '../utils/colors'
+import { stackColors, screensColor } from '../utils/colors'
 import { scale, verticalScale } from 'react-native-size-matters'
 import { Feather } from '@expo/vector-icons'
 import { useNavigation } from '@react-navigation/native'
 
-interface IDrawerScreensHeader {
+interface IStackScreensHeader {
 	style?: ViewStyle
 	label: string
 	textStyle?: TextStyle
@@ -21,13 +21,13 @@ interface IDrawerScreensHeader {
 	scrollY?: Animated.Value | null
 }
 
-const DrawerScreensHeader = ({
+const StackScreensHeader = ({
 	style,
 	textStyle = {},
 	label = '',
 	isScrollView = false,
 	scrollY = null,
-}: IDrawerScreensHeader) => {
+}: IStackScreensHeader) => {
   const navigation = useNavigation()
 	return (
 		<View style={[styles.container, style]}>
@@ -38,8 +38,9 @@ const DrawerScreensHeader = ({
 				color={screensColor.textColor}
 				style={{
 					position: 'absolute',
-					bottom: verticalScale(21),
+					bottom: verticalScale(7.5),
 					left: scale(10),
+
 				}}
 			/>
 			<Animated.Text
@@ -50,6 +51,8 @@ const DrawerScreensHeader = ({
 						color: screensColor.textColor,
 						fontSize: scale(18),
 						fontWeight: '500',
+						maxWidth: scale(350),
+						alignSelf: 'center',
 						opacity: isScrollView
 							? scrollY?.interpolate({
 									inputRange: [100, 110],
@@ -67,13 +70,13 @@ const DrawerScreensHeader = ({
 	)
 }
 
-export default DrawerScreensHeader
+export default StackScreensHeader
 
 const styles = StyleSheet.create({
 	container: {
 		top: 0,
-		backgroundColor: drawerColors.headerBackgroundColor,
-		height: verticalScale(80),
+		backgroundColor: stackColors.headerBackgroundColor,
+		height: verticalScale(70),
 		width: '100%',
 	},
 })
