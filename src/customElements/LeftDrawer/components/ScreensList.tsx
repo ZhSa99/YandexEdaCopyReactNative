@@ -1,12 +1,11 @@
 import {
-	Image,
 	ImageSourcePropType,
 	Pressable,
 	StyleSheet,
 	Text,
 	View,
 } from 'react-native'
-import React from 'react'
+import React, { useContext } from 'react'
 import { StackRootParamList } from '../../../navigation/types'
 import {
 	aboutServiceScreen_ICON,
@@ -19,12 +18,17 @@ import {
 } from '../../../utils/iconsPaths'
 import { scale, verticalScale } from 'react-native-size-matters'
 import CustomIcon from '../../CustomIcon'
-import { useNavigation } from '@react-navigation/native'
+import { NavigationContext } from '../../../context/NavigationContext/NavigationContext'
+import { screenNames_RU } from '../../../utils/screenLabels'
+import * as WebBrowser from 'expo-web-browser'
+import { DrawerContext } from '../../../context/DrawerContext/DrawerContext'
+import { stackColors } from '../../../utils/colors'
 
 const stackNavigatorScreens: {
 	screenName: keyof StackRootParamList
 	iconPath: ImageSourcePropType
 	title: string
+	url?: string
 }[] = [
 	{
 		screenName: 'OrdersListScreen',
@@ -34,41 +38,58 @@ const stackNavigatorScreens: {
 	{
 		screenName: 'ProfileScreen',
 		iconPath: profileScreen_ICON,
-		title: 'Профиль',
+		title: screenNames_RU.profile,
 	},
 	{
 		screenName: 'PromocodesScreen',
 		iconPath: promocodesScreen_ICON,
-		title: 'Промокоды',
+		title: screenNames_RU.promocodes,
 	},
 	{
 		screenName: 'AddressesScreen',
 		iconPath: addressesScreen_ICON,
-		title: 'Адреса',
+		title: screenNames_RU.addresses,
 	},
 	{
 		screenName: 'AboutServiceScreen',
 		iconPath: aboutServiceScreen_ICON,
-		title: 'О сервисе',
+		title: screenNames_RU.aboutService,
 	},
 	{
 		screenName: 'BecomeCourierScreen',
 		iconPath: becomeCourierScreen_ICON,
-		title: 'Стать курьером',
+		title: screenNames_RU.becomeCourier,
+		url: 'https://eda.yandex.ru/partner/rabota/?utm_medium=eda_app&utm_source=eda_app_menu',
 	},
 	{
 		screenName: 'FoodForBusinessScreen',
 		iconPath: foodForBusiness_ICON,
-		title: 'Еда для бизнеса',
+		title: screenNames_RU.foodForBusiness,
+		url: 'https://yandex.ru/project/eda/lunchcard?utm_source=app&utm_medium=eats',
 	},
 ]
 
 const ScreensList = () => {
+	const { navigateToScreen } = useContext(NavigationContext)
+	const { setDrawerIsOpen } = useContext(DrawerContext)
+
 	return (
 		<View style={{ width: '100%', marginTop: verticalScale(30) }}>
 			{stackNavigatorScreens.map((elem) => {
 				return (
 					<Pressable
+						onPress={() => {
+							elem.url
+								? (async () => {
+										setDrawerIsOpen()
+										await WebBrowser.openBrowserAsync(elem.url as string, {
+											presentationStyle:
+												WebBrowser.WebBrowserPresentationStyle.FULL_SCREEN,
+												toolbarColor: stackColors.headerBackgroundColor
+										})
+								  })()
+								: navigateToScreen(elem.screenName)
+						}}
 						key={`screen-${elem.screenName.toString()}`}
 						style={{
 							height: verticalScale(55),
@@ -82,7 +103,12 @@ const ScreensList = () => {
 							iconStyle={{ tintColor: 'white' }}
 						/>
 						<Text
-							style={{ color: 'white', fontSize: scale(17), fontWeight: '400', left: scale(13) }}
+							style={{
+								color: 'white',
+								fontSize: scale(17),
+								fontWeight: '400',
+								left: scale(13),
+							}}
 						>
 							{elem.title}
 						</Text>
