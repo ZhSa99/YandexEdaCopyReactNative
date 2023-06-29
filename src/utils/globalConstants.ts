@@ -12,3 +12,4 @@ export const drawerElemSizes = {
 	},
 	yandexBonusFontSize: scale(18),
 }
+
