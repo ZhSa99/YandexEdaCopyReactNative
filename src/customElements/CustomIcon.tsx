@@ -13,19 +13,26 @@ interface ICustomIcon {
 	source: ImageSourcePropType
 	containerStyle?: ViewStyle
 	iconStyle?: ImageStyle
+	iconSize?: number
 }
 
 const CustomIcon = ({
 	source = require('../../assets/icons/user_icon.png'),
 	containerStyle,
 	iconStyle,
+	iconSize,
 }: ICustomIcon) => {
 	return (
-		<View style={{...styles.containerStyleDefault, ...containerStyle}}>
+		<View style={{ ...styles.containerStyleDefault, ...containerStyle }}>
 			<Image
 				source={source}
-				style={{ ...styles.containerStyleDefault, ...iconStyle }}
-				resizeMode='contain'
+				style={{
+					...styles.containerStyleDefault,
+
+					...iconStyle,
+					...(iconSize ? { width: scale(iconSize), height:verticalScale(iconSize) } : null),
+				}}
+				resizeMode="contain"
 			/>
 		</View>
 	)
@@ -39,12 +46,5 @@ const styles = StyleSheet.create({
 		height: verticalScale(24),
 		alignItems: 'center',
 		justifyContent: 'center',
-
-	},
-	iconStyleDefault: {
-		width: scale(20),
-		height: verticalScale(20),
-		tintColor: 'black',
-		resizeMode: 'cover',
-	},
+	}
 })
