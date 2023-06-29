@@ -17,21 +17,22 @@ import LeftDrawer from './src/customElements/LeftDrawer/LeftDrawer'
 import { scale } from 'react-native-size-matters'
 import { DrawerProvider } from './src/context/DrawerContext/DrawerContext'
 import AppNavigation from './src/navigation/AppNavigation/AppNavigation'
+import { NavigationProvider } from './src/context/NavigationContext/NavigationContext'
 
 const { width, height } = Dimensions.get('screen')
 
 export default function App() {
-	const stackNavigationRef = createNavigationContainerRef<StackRootParamList>()
-
 	return (
 		<DrawerProvider>
-			<View style={{ width, height, flexDirection: 'row' }}>
-				<StatusBar style="light" />
+			<NavigationProvider>
+				<View style={{ width, height, flexDirection: 'row' }}>
+					<StatusBar style="light" />
 
-				<LeftDrawer ref={stackNavigationRef} />
+					<LeftDrawer />
 
-				<AppNavigation ref={stackNavigationRef} />
-			</View>
+					<AppNavigation />
+				</View>
+			</NavigationProvider>
 		</DrawerProvider>
 	)
 }
