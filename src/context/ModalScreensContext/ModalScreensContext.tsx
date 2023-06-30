@@ -1,8 +1,10 @@
-import React, { createContext, useState } from 'react'
+import React, { createContext, useMemo, useState } from 'react'
 
 interface IModalScreensContext {
 	basketModalVisible: boolean
 	setBasketModalVisible: () => void
+	searchModalVisible: boolean
+	setSearchModalVisible: () => void
 }
 
 export const ModalScreensContext = createContext({} as IModalScreensContext)
@@ -15,10 +17,17 @@ export const ModalScreensProvider: React.FC<{ children: React.ReactNode }> = ({
 		setBasketModalVisible(!basketModalVisible)
 	}
 
-	const value = {
+	const [searchModalVisible, setSearchModalVisible] = useState(false)
+	const searchModalVisibleHandler = () => {
+		setSearchModalVisible(!searchModalVisible)
+	}
+
+	const value = useMemo(() => ({
 		basketModalVisible,
 		setBasketModalVisible: basketModalVisibleHandler,
-	}
+		searchModalVisible,
+		setSearchModalVisible: searchModalVisibleHandler,
+	}), [basketModalVisible, searchModalVisible])
 
 	return (
 		<ModalScreensContext.Provider value={value}>
