@@ -23,3 +23,18 @@ export const screensColor = {
 export const tabBarBackgroundColor = '#41413e'
 
 export const YANDEX_BONUS_GRADIENT_COLORS = ['#f85568', '#555cf6']
+export const buttonColorYellow = '#fce000'
+export const mainBackgroundColor = '#191918'
+
+export const basketModalScreenColors = {
+	backgroundColor: '#191918',
+}
+
+//
+//
+export const modalColors = {
+	textColor: '#e0deda',
+	textColorDark: '#9d9b98',
+}
+
+
