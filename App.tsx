@@ -1,20 +1,8 @@
-import {
-	NavigationContainer,
-	createNavigationContainerRef,
-} from '@react-navigation/native'
 import { StatusBar } from 'expo-status-bar'
-import { Animated, Dimensions, StyleSheet, Text, View } from 'react-native'
-import BottomTabNavigation from './src/navigation/BottomTabNavigation/BottomTabNavigation'
+import { Dimensions, View } from 'react-native'
 import 'react-native-gesture-handler'
-import MainHeader from './src/customElements/MainHeader/MainHeader'
 
-import {
-	BottomTabRootParamList,
-	StackRootParamList,
-} from './src/navigation/types'
-import StackNavigation from './src/navigation/StackNavigation/StackNavigation'
 import LeftDrawer from './src/customElements/LeftDrawer/LeftDrawer'
-import { scale } from 'react-native-size-matters'
 import { DrawerProvider } from './src/context/DrawerContext/DrawerContext'
 import AppNavigation from './src/navigation/AppNavigation/AppNavigation'
 import { NavigationProvider } from './src/context/NavigationContext/NavigationContext'
