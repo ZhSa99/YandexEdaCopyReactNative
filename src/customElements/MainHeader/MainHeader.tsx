@@ -1,14 +1,11 @@
-import { Button, Pressable, SafeAreaView, StyleSheet, Text, View } from 'react-native'
+import { Pressable, SafeAreaView, StyleSheet, Text, View } from 'react-native'
 import React, { useContext } from 'react'
 import CustomIcon from '../CustomIcon'
 import { user_ICON, yandexPlus_ICON } from '../../utils/iconsPaths'
 import { scale, verticalScale } from 'react-native-size-matters'
-import { NavigationContainerRefWithCurrent, useNavigation } from '@react-navigation/native'
 import { LinearGradient } from 'expo-linear-gradient'
 import { YANDEX_BONUS_GRADIENT_COLORS, stackColors } from '../../utils/colors'
-import { drawerElemSizes } from '../../utils/globalConstants'
 import { AntDesign } from '@expo/vector-icons'
-import { BottomTabRootParamList, StackRootParamList } from '../../navigation/types'
 import { DrawerContext } from '../../context/DrawerContext/DrawerContext'
 
 const MainHeader = ({}) => {
@@ -43,7 +40,7 @@ const MainHeader = ({}) => {
 							adjustsFontSizeToFit
 							style={{
 								color: stackColors.titleColor,
-								fontSize: drawerElemSizes.headerLabelFontSize.first,
+								fontSize: scale(13),
 							}}
 						>
 							Адрес и время доставки
@@ -59,7 +56,7 @@ const MainHeader = ({}) => {
 						adjustsFontSizeToFit
 						style={{
 							color: stackColors.textColor,
-							fontSize: drawerElemSizes.headerLabelFontSize.second,
+							fontSize: scale(15.5),
 							fontWeight: '600',
 						}}
 					>
@@ -90,7 +87,7 @@ const MainHeader = ({}) => {
 					/>
 					<Text
 						style={{
-							fontSize: drawerElemSizes.yandexBonusFontSize,
+							fontSize: scale(18),
 							fontWeight: '500',
 							color: 'white',
 							zIndex: 11,
