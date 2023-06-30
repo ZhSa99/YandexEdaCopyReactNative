@@ -26,6 +26,12 @@ export const YANDEX_BONUS_GRADIENT_COLORS = ['#f85568', '#555cf6']
 export const buttonColorYellow = '#fce000'
 export const mainBackgroundColor = '#191918'
 
+export const buttonContainerColor = '#302f2d'
+
+export const textColor1 = '#9d9b98'
+export const textColor2 = '#e0deda'
+export const textColor3 = '#8d8c89'
+
 export const basketModalScreenColors = {
 	backgroundColor: '#191918',
 }
