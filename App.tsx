@@ -18,6 +18,8 @@ import { scale } from 'react-native-size-matters'
 import { DrawerProvider } from './src/context/DrawerContext/DrawerContext'
 import AppNavigation from './src/navigation/AppNavigation/AppNavigation'
 import { NavigationProvider } from './src/context/NavigationContext/NavigationContext'
+import { ModalScreensProvider } from './src/context/ModalScreensContext/ModalScreensContext'
+import ModalScreens from './src/customElements/ModalScreens/ModalScreens'
 
 const { width, height } = Dimensions.get('screen')
 
@@ -25,13 +27,17 @@ export default function App() {
 	return (
 		<DrawerProvider>
 			<NavigationProvider>
-				<View style={{ width, height, flexDirection: 'row' }}>
-					<StatusBar style="light" />
+				<ModalScreensProvider>
+					<View style={{ width, height, flexDirection: 'row' }}>
+						<StatusBar style="light" />
 
-					<LeftDrawer />
+						<LeftDrawer />
 
-					<AppNavigation />
-				</View>
+						<AppNavigation />
+
+						<ModalScreens />
+					</View>
+				</ModalScreensProvider>
 			</NavigationProvider>
 		</DrawerProvider>
 	)
