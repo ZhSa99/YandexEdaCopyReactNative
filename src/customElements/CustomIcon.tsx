@@ -30,7 +30,9 @@ const CustomIcon = ({
 					...styles.containerStyleDefault,
 
 					...iconStyle,
-					...(iconSize ? { width: scale(iconSize), height:verticalScale(iconSize) } : null),
+					...(iconSize
+						? { width: scale(iconSize), height: verticalScale(iconSize) }
+						: null),
 				}}
 				resizeMode="contain"
 			/>
@@ -46,5 +48,5 @@ const styles = StyleSheet.create({
 		height: verticalScale(24),
 		alignItems: 'center',
 		justifyContent: 'center',
-	}
+	},
 })
