@@ -23,3 +23,7 @@ export const becomeCourierScreen_ICON = require('../../assets/icons/becomeCourie
 export const foodForBusiness_ICON = require('../../assets/icons/foodForBusiness_icon.png')
 export const techSupport_ICON = require('../../assets/icons/support_icon.png')
 
+//
+//
+export const emptyBasket_ICON = require('../../assets/icons/emptyBasket_icon.png')
+
