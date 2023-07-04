@@ -26,7 +26,6 @@ const SearchModal = ({ setSearchModalVisible }: ISearchModal) => {
 
   React.useEffect(() => {
     textInputRef.current?.focus()
-    console.log(StatusBar.currentHeight);
   }, [])
 
 	return (
