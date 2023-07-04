@@ -1,5 +1,7 @@
+import { Animated } from "react-native"
+
 export type BottomTabRootParamList ={
-  MainScreen: undefined
+  MainScreen: {scrollY: Animated.Value}
   RestaurantsScreen: undefined
   ShopsScreen: undefined
   BasketScreen: undefined

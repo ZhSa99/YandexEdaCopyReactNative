@@ -6,12 +6,15 @@ import { scale } from 'react-native-size-matters'
 import { DrawerContext } from '../../context/DrawerContext/DrawerContext'
 import { StackRootParamList } from '../types'
 import { NavigationContext } from '../../context/NavigationContext/NavigationContext'
+import MainHeader from '../../customElements/MainHeader/MainHeader'
+import SearchModalHandler from '../../customElements/SearchModalHandler/SearchModalHandler'
 
 const AppNavigation = () => {
 	const { drawerIsOpen } = useContext(DrawerContext)
 	const {navigationRef} = useContext(NavigationContext)
 
 	const scrollX = useRef(new Animated.Value(0)).current
+
 
 	const slideAnimation = () => {
 		Animated.timing(scrollX, {
@@ -34,6 +37,7 @@ const AppNavigation = () => {
 				},
 			]}
 		>
+
 			<NavigationContainer ref={navigationRef}>
 				<StackNavigation />
 			</NavigationContainer>
