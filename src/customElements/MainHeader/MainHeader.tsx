@@ -1,4 +1,11 @@
-import { Pressable, SafeAreaView, StyleSheet, Text, View } from 'react-native'
+import {
+	Animated,
+	Pressable,
+	SafeAreaView,
+	StyleSheet,
+	Text,
+	View,
+} from 'react-native'
 import React, { useContext } from 'react'
 import CustomIcon from '../CustomIcon'
 import { user_ICON, yandexPlus_ICON } from '../../utils/iconsPaths'
@@ -6,6 +13,7 @@ import { scale, verticalScale } from 'react-native-size-matters'
 import { LinearGradient } from 'expo-linear-gradient'
 import {
 	YANDEX_BONUS_GRADIENT_COLORS,
+	bottomTabColors,
 	stackColors,
 	textColor1,
 } from '../../utils/colors'
@@ -13,23 +21,25 @@ import { AntDesign, Ionicons } from '@expo/vector-icons'
 import { DrawerContext } from '../../context/DrawerContext/DrawerContext'
 import { ModalScreensContext } from '../../context/ModalScreensContext/ModalScreensContext'
 
-const MainHeader = ({}) => {
+interface IMainHeader {
+	scrollY: Animated.Value
+}
+
+const MainHeader = () => {
 	const { setDrawerIsOpen } = useContext(DrawerContext)
-	const {setSearchModalVisible} = useContext(ModalScreensContext)
+	
 	return (
-		<SafeAreaView
-			style={{
-				height: verticalScale(160),
-				backgroundColor: stackColors.headerBackgroundColor,
-				alignItems: 'center',
-			}}
-		>
-			<View
+		<View>
+			<Animated.View
 				style={{
 					flexDirection: 'row',
 					alignItems: 'center',
 					justifyContent: 'space-between',
-					width: scale(330),
+					width: '100%',
+					height: verticalScale(60),
+					backgroundColor: bottomTabColors.sceneBackgroundColor,
+					padding: scale(15),
+					paddingTop: 0
 				}}
 			>
 				<Pressable onPress={setDrawerIsOpen}>
@@ -112,30 +122,8 @@ const MainHeader = ({}) => {
 						}}
 					/>
 				</Pressable>
-			</View>
-			<Pressable
-				onPress={setSearchModalVisible}
-				style={{
-					width: scale(318),
-					height: verticalScale(45),
-
-					alignItems: 'center',
-					justifyContent: 'center',
-					borderRadius: scale(18),
-
-					backgroundColor: '#2f2f2d',
-					top: verticalScale(13),
-					flexDirection: 'row',
-				}}
-			>
-				<Ionicons name="ios-search" size={scale(28)} color={textColor1} />
-				<Text
-					style={{ color: textColor1, fontSize: scale(18), left: scale(4) }}
-				>
-					Поиск
-				</Text>
-			</Pressable>
-		</SafeAreaView>
+			</Animated.View>
+		</View>
 	)
 }
 
