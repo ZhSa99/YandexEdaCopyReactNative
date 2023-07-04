@@ -1897,7 +1897,7 @@
   "resolved" "https://registry.npmjs.org/@react-navigation/elements/-/elements-1.3.18.tgz"
   "version" "1.3.18"
 
-"@react-navigation/native@^6.0.0", "@react-navigation/native@^6.1.7":
+"@react-navigation/native@^6.0.0", "@react-navigation/native@^6.1.7", "@react-navigation/native@>=6":
   "integrity" "sha512-W6E3+AtTombMucCRo6q7vPmluq8hSjS+IxfazJ/SokOe7ChJX7eLvvralIsJkjFj3iWV1KgOSnHxa6hdiFasBw=="
   "resolved" "https://registry.npmjs.org/@react-navigation/native/-/native-6.1.7.tgz"
   "version" "6.1.7"
@@ -1914,7 +1914,7 @@
   dependencies:
     "nanoid" "^3.1.23"
 
-"@react-navigation/stack@^6.3.17":
+"@react-navigation/stack@^6.3.17", "@react-navigation/stack@>=6":
   "integrity" "sha512-8/8ZvJROK3fp6PRmQ9MrXd9epBowA8NkfCaWW/N9H5arqwNX9lTXAkmcjicRhjpX+UNlMBR9dTLkWvPRe2vY9A=="
   "resolved" "https://registry.npmjs.org/@react-navigation/stack/-/stack-6.3.17.tgz"
   "version" "6.3.17"
@@ -5970,6 +5970,11 @@
   "resolved" "https://registry.npmjs.org/react-native-gradle-plugin/-/react-native-gradle-plugin-0.71.19.tgz"
   "version" "0.71.19"
 
+"react-native-iphone-x-helper@^1.3.1":
+  "integrity" "sha512-HOf0jzRnq2/aFUcdCJ9w9JGzN3gdEg0zFE4FyYlp4jtidqU03D5X7ZegGKfT1EWteR0gPBGp9ye5T5FvSWi9Yg=="
+  "resolved" "https://registry.npmjs.org/react-native-iphone-x-helper/-/react-native-iphone-x-helper-1.3.1.tgz"
+  "version" "1.3.1"
+
 "react-native-reanimated@^2.14.4", "react-native-reanimated@>= 1.0.0":
   "integrity" "sha512-DquSbl7P8j4SAmc+kRdd75Ianm8G+IYQ9T4AQ6lrpLVeDkhZmjWI0wkutKWnp6L7c5XNVUrFDUf69dwETLCItQ=="
   "resolved" "https://registry.npmjs.org/react-native-reanimated/-/react-native-reanimated-2.14.4.tgz"
@@ -6009,7 +6014,7 @@
     "escape-string-regexp" "2.0.0"
     "invariant" "2.2.4"
 
-"react-native@*", "react-native@0.71.8":
+"react-native@*", "react-native@>=0.42.0", "react-native@>=0.59", "react-native@0.71.8":
   "integrity" "sha512-ftMAuhpgTkbHU9brrqsEyxcNrpYvXKeATY+if22Nfhhg1zW+6wn95w9otwTnA3xHkljPCbng8mUhmmERjGEl7g=="
   "resolved" "https://registry.npmjs.org/react-native/-/react-native-0.71.8.tgz"
   "version" "0.71.8"
@@ -6048,6 +6053,14 @@
     "use-sync-external-store" "^1.0.0"
     "whatwg-fetch" "^3.0.0"
     "ws" "^6.2.2"
+
+"react-navigation-collapsible@^6.3.0":
+  "integrity" "sha512-EKr7e9/NrYswmLGNyO+PvUJ58OSMGlan0dWXtaZuW2hblv/HEa/5W0A8cRxFfokcZfaVv154OsviW+4Rc/1dvA=="
+  "resolved" "https://registry.npmjs.org/react-navigation-collapsible/-/react-navigation-collapsible-6.3.0.tgz"
+  "version" "6.3.0"
+  dependencies:
+    "react-native-iphone-x-helper" "^1.3.1"
+    "shallowequal" "^1.1.0"
 
 "react-refresh@^0.4.0":
   "integrity" "sha512-Hwln1VNuGl/6bVwnd0Xdn1e84gT/8T9aYNL+HAKDArLCS7LWjwr7StE30IEYbIkx0Vi3vs+coQxe+SQDbGbbpA=="
@@ -6450,6 +6463,11 @@
   "version" "3.0.1"
   dependencies:
     "kind-of" "^6.0.2"
+
+"shallowequal@^1.1.0":
+  "integrity" "sha512-y0m1JoUZSlPAjXVtPPW70aZWfIL/dSP7AFkRnniLCrK/8MDKog3TySTBmckD+RObVxH0v4Tox67+F14PdED2oQ=="
+  "resolved" "https://registry.npmjs.org/shallowequal/-/shallowequal-1.1.0.tgz"
+  "version" "1.1.0"
 
 "shebang-command@^1.2.0":
   "integrity" "sha512-EV3L1+UQWGor21OmnvojK36mhg+TyIKDh3iFBKBohr5xeXIhNBcx8oWdgkTEEQ+BEFFYdLRuqMfd5L84N1V5Vg=="
