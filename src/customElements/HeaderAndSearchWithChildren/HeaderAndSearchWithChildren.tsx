@@ -71,7 +71,7 @@ const headerAndSearch = headerIsPinned
 			)}
 			data={[...headerAndSearch, children]}
 			keyExtractor={(_, index) => index.toString()}
-			renderItem={({ item, index }) => {
+			renderItem={({ item }) => {
 				return item
 			}}
 		/>
