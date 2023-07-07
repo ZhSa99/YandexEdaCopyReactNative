@@ -9,7 +9,7 @@ const getStarColor = (rate: number) => {
 	return rate > 4.5 ? goldenStarColor : greyStarColor
 }
 
-const getRatingInfo = (rate: number, rateCount: number) => {
+export const getRatingInfo = (rate: number, rateCount: number) => {
 	return {
 		rate: `${rate} ${rate > 4.6 ? 'Хорошо' : null}`,
 		rateCount:
