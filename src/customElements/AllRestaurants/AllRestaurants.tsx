@@ -22,6 +22,7 @@ import {
 import CustomIcon from '../CustomIcon'
 import { delivery_ICON } from '../../utils/iconsPaths'
 import { StackRootParamList } from '../../navigation/types'
+import CustomExpoIcon from '../CustomExpoIcon'
 
 interface IAllRestaurants {
 	hasAllRestaurantsLabel?: boolean
@@ -32,17 +33,29 @@ const { height } = Dimensions.get('screen')
 const AllRestaurants = ({
 	hasAllRestaurantsLabel = false,
 }: IAllRestaurants) => {
-	const { isLoading, getRestaurantsList, restaurantsList } = useRestaurants()
+	const { isLoading, getRestaurantsList } = useRestaurants()
 
 	const navigation = useNavigation<NavigationProp<StackRootParamList>>()
 
-	React.useEffect(() => {
-		getRestaurantsList()
-	}, [])
+	// React.useEffect(() => {
+	// 	getRestaurantsList()
+	// }, [])
 
-	if (isLoading) {
-		return <ActivityIndicator />
-	}
+	// console.log(restaurantsList);
+	// if (isLoading) {
+	// 	return <ActivityIndicator />
+	// }
+	const restaurantsList =  [
+   {
+    "deliveryTime": "20-30",
+    "foodType": "fastfood",
+    "iconPath": "https://firebasestorage.googleapis.com/v0/b/yandexedaclone.appspot.com/o/restaurants%2Fkfc%2Fkfc_MAIN_ICON.jpg?alt=media&token=5e986914-bc1b-41b8-806c-3d8f5ea5d18a",
+    "id": "kfc",
+    "name": "KFC",
+    "rateCount": 242,
+    "rating": 4.8,
+  },
+]
 	return (
 		<View
 			style={{
@@ -62,7 +75,9 @@ const AllRestaurants = ({
 				return (
 					<Pressable
 						onPress={() =>
-							navigation.navigate('RestaurantInfoScreen', { restaurantInfo: elem})
+							navigation.navigate('RestaurantInfoScreen', {
+								restaurantInfo: elem,
+							})
 						}
 						key={elem.id}
 						style={styles.container}
@@ -89,13 +104,11 @@ const AllRestaurants = ({
 								<Text style={styles.textStyle}>Доставка 0-249₸</Text>
 							</View>
 
-							<View style={styles.heartButtonContainer}>
-								<MaterialCommunityIcons
-									name="cards-heart-outline"
-									size={scale(25)}
-									color={textColorLightDark}
-								/>
-							</View>
+							<CustomExpoIcon
+								containerStyle={styles.heartButtonContainer}
+								iconName="cards-heart-outline"
+								expoIconName="MaterialCommunityIcons"
+							/>
 
 							<View style={styles.deliveryTimeContainer}>
 								<CustomIcon
@@ -152,14 +165,7 @@ const styles = StyleSheet.create({
 		position: 'absolute',
 		right: 0,
 		top: 0,
-		margin: scale(10),
-		width: scale(42),
-		height: scale(42),
-		borderRadius: 50,
-		backgroundColor: buttonContainerColor,
-		alignItems: 'center',
-		justifyContent: 'center',
-		opacity: 0.92,
+		margin: scale(10)
 	},
 	deliveryTimeContainer: {
 		width: scale(130),
