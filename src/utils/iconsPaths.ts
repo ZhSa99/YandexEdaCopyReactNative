@@ -27,3 +27,7 @@ export const techSupport_ICON = require('../../assets/icons/support_icon.png')
 //
 export const emptyBasket_ICON = require('../../assets/icons/emptyBasket_icon.png')
 
+//
+//
+export const delivery_ICON = require('../../assets/icons/delivery_logo.png')
+
