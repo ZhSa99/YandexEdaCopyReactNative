@@ -11,6 +11,7 @@ import BecomeCourierScreen from '../../screens/BecomeCourierScreen/BecomeCourier
 import FoodForBusinessScreen from '../../screens/FoodForBusinessScreen/FoodForBusinessScreen'
 import BottomTabNavigation from '../BottomTabNavigation/BottomTabNavigation'
 import { useNavigation, useRoute } from '@react-navigation/native'
+import RestaurantInfoScreen from '../../screens/RestaurantInfoScreen/RestaurantInfoScreen'
 
 const Stack = createStackNavigator<StackRootParamList>()
 
@@ -34,6 +35,7 @@ const StackNavigation = () => {
 				name={'FoodForBusinessScreen'}
 				component={FoodForBusinessScreen}
 			/>
+			<Stack.Screen name='RestaurantInfoScreen' component={RestaurantInfoScreen}/>
 		</Stack.Navigator>
 	)
 }
