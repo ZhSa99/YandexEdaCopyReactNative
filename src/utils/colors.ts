@@ -50,6 +50,9 @@ export const goldenStarColor = '#fac220'
 export const greyStarColor = '#c3c2be'
 export const deliveryGreenColor = '#5ac219'
 
+export const containerColor = '#393937'
+
 export const textColorLightDark = '#e0deda'
+export const textColorDark = '#8b8b8b'
 
 
