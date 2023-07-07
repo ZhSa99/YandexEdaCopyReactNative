@@ -33,29 +33,29 @@ const { height } = Dimensions.get('screen')
 const AllRestaurants = ({
 	hasAllRestaurantsLabel = false,
 }: IAllRestaurants) => {
-	const { isLoading, getRestaurantsList } = useRestaurants()
+	const { isLoading, getRestaurantsList, restaurantsList } = useRestaurants()
 
 	const navigation = useNavigation<NavigationProp<StackRootParamList>>()
 
-	// React.useEffect(() => {
-	// 	getRestaurantsList()
-	// }, [])
+	React.useEffect(() => {
+		getRestaurantsList()
+	}, [])
 
-	// console.log(restaurantsList);
-	// if (isLoading) {
-	// 	return <ActivityIndicator />
-	// }
-	const restaurantsList =  [
-   {
-    "deliveryTime": "20-30",
-    "foodType": "fastfood",
-    "iconPath": "https://firebasestorage.googleapis.com/v0/b/yandexedaclone.appspot.com/o/restaurants%2Fkfc%2Fkfc_MAIN_ICON.jpg?alt=media&token=5e986914-bc1b-41b8-806c-3d8f5ea5d18a",
-    "id": "kfc",
-    "name": "KFC",
-    "rateCount": 242,
-    "rating": 4.8,
-  },
-]
+	console.log(restaurantsList);
+	if (isLoading) {
+		return <ActivityIndicator />
+	}
+// 	const restaurantsList =  [
+//    {
+//     "deliveryTime": "20-30",
+//     "foodType": "fastfood",
+//     "iconPath": "https://firebasestorage.googleapis.com/v0/b/yandexedaclone.appspot.com/o/restaurants%2Fkfc%2Fkfc_MAIN_ICON.jpg?alt=media&token=5e986914-bc1b-41b8-806c-3d8f5ea5d18a",
+//     "id": "kfc",
+//     "name": "KFC",
+//     "rateCount": 242,
+//     "rating": 4.8,
+//   },
+// ]
 	return (
 		<View
 			style={{
