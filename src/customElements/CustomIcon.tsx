@@ -48,5 +48,6 @@ const styles = StyleSheet.create({
 		height: verticalScale(24),
 		alignItems: 'center',
 		justifyContent: 'center',
+		backgroundColor: 'transparent'
 	},
 })
