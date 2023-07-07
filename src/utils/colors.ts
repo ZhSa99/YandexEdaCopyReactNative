@@ -43,4 +43,13 @@ export const modalColors = {
 	textColorDark: '#9d9b98',
 }
 
+//Restaurant info colors
+//
+
+export const goldenStarColor = '#fac220'
+export const greyStarColor = '#c3c2be'
+export const deliveryGreenColor = '#5ac219'
+
+export const textColorLightDark = '#e0deda'
+
 
