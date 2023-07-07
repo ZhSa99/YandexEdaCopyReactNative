@@ -1,4 +1,5 @@
 import { Animated } from "react-native"
+import { IRestaurantInfo } from "../hooks/useRestaurants"
 
 export type BottomTabRootParamList ={
   MainScreen: {scrollY: Animated.Value}
@@ -16,4 +17,5 @@ export type StackRootParamList = {
 	AboutServiceScreen: undefined
 	BecomeCourierScreen: undefined
 	FoodForBusinessScreen: undefined
+	RestaurantInfoScreen: { restaurantInfo?: IRestaurantInfo}
 }
