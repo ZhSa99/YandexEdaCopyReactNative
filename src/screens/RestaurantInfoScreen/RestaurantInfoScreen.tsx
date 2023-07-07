@@ -45,19 +45,21 @@ const RestaurantInfoScreen = ({
 	const dishesListFiltered = dishesList.filter(
 		(elem) => elem.id !== 'generalInformation'
 	)
-	const categoriesList = dishesList.filter(
-		(elem) => elem.id === 'generalInformation'
-	)[0]
+	const categoriesList = Object.values(
+		dishesList.filter((elem) => elem.id === 'generalInformation')[0]
+	).filter(elem => elem !== 'generalInformation')
 	
 	return (
-		<View style={{ backgroundColor: mainBackgroundColor, flex: 1 }}>
+		<View style={{ backgroundColor: mainBackgroundColor, height: '100%' }}>
 			{isLoading ? (
 				<ActivityIndicator />
 			) : (
 				<>
-					<RestaurantInfo restaurantInfo={restaurantInfo}/>
+					<RestaurantInfo restaurantInfo={restaurantInfo} />
 
-					<CategoriesList categoriesList={Object.values(categoriesList)}/>
+					<View style={{ paddingTop: verticalScale(20) }}>
+						<CategoriesList categoriesList={categoriesList} />
+					</View>
 				</>
 			)}
 		</View>
