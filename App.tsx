@@ -8,10 +8,18 @@ import AppNavigation from './src/navigation/AppNavigation/AppNavigation'
 import { NavigationProvider } from './src/context/NavigationContext/NavigationContext'
 import { ModalScreensProvider } from './src/context/ModalScreensContext/ModalScreensContext'
 import ModalScreens from './src/customElements/ModalScreens/ModalScreens'
+import { useEffect } from 'react'
+import { login } from './src/firebase/firebaseConfig'
 
 const { width, height } = Dimensions.get('screen')
 
 export default function App() {
+	useEffect(() => {
+		const aaa = async () => {
+			await login('test@gmail.com', 'testpassword')
+		}
+		aaa()
+	}, [])
 	return (
 		<DrawerProvider>
 			<NavigationProvider>
