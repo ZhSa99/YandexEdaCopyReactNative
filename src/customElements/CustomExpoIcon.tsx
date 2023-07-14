@@ -1,14 +1,14 @@
-import { StyleSheet, Text, View, ViewStyle } from 'react-native'
+import { Animated, StyleSheet, Text, View, ViewStyle } from 'react-native'
 import React from 'react'
 import { buttonContainerColor, textColorLightDark } from '../utils/colors'
 import { FontAwesome, Ionicons, MaterialCommunityIcons } from '@expo/vector-icons'
 import { scale } from 'react-native-size-matters'
 
 interface ICustomExpoIcon {
-	containerStyle?: ViewStyle
+	containerStyle?: ViewStyle | Animated.AnimatedInterpolation<string | number>
 	expoIconName: string
 	iconName: string
-	withContainer?: boolean,
+	withContainer?: boolean
 	iconSize?: number
 }
 
@@ -48,7 +48,7 @@ const CustomExpoIcon = ({
 		}
 	}
 	return (
-		<View
+		<Animated.View
 			style={[
 				withContainer
 					? {
@@ -62,7 +62,7 @@ const CustomExpoIcon = ({
 			]}
 		>
 			{expoIcon()}
-		</View>
+		</Animated.View>
 	)
 }
 
@@ -76,6 +76,6 @@ const styles = StyleSheet.create({
 		alignItems: 'center',
 		justifyContent: 'center',
 		opacity: 0.92,
-		margin: scale(10),
+		marginTop: scale(10),
 	},
 })
