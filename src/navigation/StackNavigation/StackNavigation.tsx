@@ -12,6 +12,7 @@ import FoodForBusinessScreen from '../../screens/FoodForBusinessScreen/FoodForBu
 import BottomTabNavigation from '../BottomTabNavigation/BottomTabNavigation'
 import { useNavigation, useRoute } from '@react-navigation/native'
 import RestaurantInfoScreen from '../../screens/RestaurantInfoScreen/RestaurantInfoScreen'
+import { ModalScreensProvider } from '../../context/ModalScreensContext/ModalScreensContext'
 
 const Stack = createStackNavigator<StackRootParamList>()
 
