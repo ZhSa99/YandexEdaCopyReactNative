@@ -8,6 +8,7 @@ import { StackRootParamList } from '../types'
 import { NavigationContext } from '../../context/NavigationContext/NavigationContext'
 import MainHeader from '../../customElements/MainHeader/MainHeader'
 import SearchModalHandler from '../../customElements/SearchModalHandler/SearchModalHandler'
+import { ModalScreensProvider } from '../../context/ModalScreensContext/ModalScreensContext'
 
 const AppNavigation = () => {
 	const { drawerIsOpen } = useContext(DrawerContext)
