@@ -1,6 +1,6 @@
 import { ImageRequireSource, StyleSheet, Text, View } from 'react-native'
 import React, { useMemo, useState } from 'react'
-import { query, collection, orderBy, getDocs } from 'firebase/firestore'
+import { query, collection, orderBy, getDocs, where } from 'firebase/firestore'
 import { db } from '../firebase/firebaseConfig'
 
 export interface IRestaurantInfo {
@@ -14,12 +14,17 @@ export interface IRestaurantInfo {
 }
 
 export interface IDishesListInfo {
+	id: string
 	amount: string | null
 	cost: number
 	iconPath: string
 	name: string
 	type: string
-	id: string
+}
+
+export interface IItemsList {
+	itemsList: IDishesListInfo[]
+	categoriesList: object
 }
 
 const useRestaurants = () => {
@@ -29,7 +34,10 @@ const useRestaurants = () => {
 	const [restaurantsList, setRestaurantsList] = React.useState(
 		{} as IRestaurantInfo[]
 	)
-	const [dishesList, setDishesList] = React.useState([] as IDishesListInfo[])
+	const [dishesList, setDishesList] = React.useState<IItemsList>({
+		itemsList: [],
+		categoriesList: [],
+	})
 
 	const getRestaurantsList = async () => {
 		setIsLoading(true)
@@ -55,20 +63,36 @@ const useRestaurants = () => {
 		setIsLoading(true)
 		try {
 			const ref = collection(db, 'restaurants', restaurantID, 'dishesList')
-			const refSnap = await getDocs(ref)
-			const dishesList = refSnap.docs.map((elem) => ({ ...elem.data(), id: elem.id }))
 
-			setDishesList(dishesList as IDishesListInfo[])
+			const refSnap = await getDocs(ref)
+			const allItems = refSnap.docs.map((elem) => ({
+				...elem.data(),
+				id: elem.id,
+			}))
+
+			const itemsList = allItems
+				.filter((elem) => elem.id !== 'generalInformation')
+
+			const categoriesList = allItems.filter(
+				(elem) => elem.id === 'generalInformation'
+			)[0]
+
+			delete (categoriesList as {id?:string}).id
+
+			setDishesList({
+				itemsList: itemsList as IDishesListInfo[],
+				categoriesList: categoriesList,
+			})
+
 		} catch (error) {
-			console.log(error);
+			console.log(error)
 		} finally {
 			setIsLoading(false)
 		}
 	}
 
-
 	React.useEffect(() => {
-		if(isInitialLoading) {
+		if (isInitialLoading) {
 			getRestaurantsList()
 		}
 	}, [isInitialLoading])
@@ -80,7 +104,7 @@ const useRestaurants = () => {
 			getDishesListFromRestaurant,
 			isLoading,
 		}),
-		[restaurantsList,dishesList, getRestaurantsList]
+		[restaurantsList, dishesList, getRestaurantsList, isLoading]
 	)
 
 	return value
