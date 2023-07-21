@@ -57,4 +57,7 @@ export const textColorDark = '#8b8b8b'
 
 export const itemColor = '#2f2e2c'
 export const itemButtonColor = '#42413d'
+export const itemModalColor1 = '#41413f'
+export const itemContainerColor = '#302f2d'
 
+export const customCounterBackgroundColor = '#54534f'
