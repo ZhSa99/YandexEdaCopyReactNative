@@ -29,7 +29,6 @@ export interface IItemsList {
 
 const useRestaurants = () => {
 	const [isLoading, setIsLoading] = useState(true)
-	const [isInitialLoading, setIsInitialLoading] = useState(false)
 
 	const [restaurantsList, setRestaurantsList] = React.useState(
 		{} as IRestaurantInfo[]
@@ -58,7 +57,8 @@ const useRestaurants = () => {
 			// setTimeout(() => setIsLoading(false), 0)
 		}
 	}
-
+	
+	
 	const getDishesListFromRestaurant = async (restaurantID: string) => {
 		setIsLoading(true)
 		try {
@@ -88,14 +88,11 @@ const useRestaurants = () => {
 			console.log(error)
 		} finally {
 			setIsLoading(false)
+			
+			
 		}
 	}
-
-	React.useEffect(() => {
-		if (isInitialLoading) {
-			getRestaurantsList()
-		}
-	}, [isInitialLoading])
+	
 	const value = useMemo(
 		() => ({
 			restaurantsList,
