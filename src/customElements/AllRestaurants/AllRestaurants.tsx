@@ -1,13 +1,15 @@
 import {
 	ActivityIndicator,
+	Button,
 	Dimensions,
 	ImageBackground,
 	Pressable,
+	SafeAreaView,
 	StyleSheet,
 	Text,
 	View,
 } from 'react-native'
-import React from 'react'
+import React, { useState } from 'react'
 import useRestaurants from '../../hooks/useRestaurants'
 import { scale, verticalScale } from 'react-native-size-matters'
 import { NavigationProp, useNavigation } from '@react-navigation/native'
@@ -23,6 +25,7 @@ import CustomIcon from '../CustomIcon'
 import { delivery_ICON } from '../../utils/iconsPaths'
 import { StackRootParamList } from '../../navigation/types'
 import CustomExpoIcon from '../CustomExpoIcon'
+import YandexLoadingAnimation from '../YandexLoadingAnimation'
 
 interface IAllRestaurants {
 	hasAllRestaurantsLabel?: boolean
@@ -34,15 +37,14 @@ const AllRestaurants = ({
 	hasAllRestaurantsLabel = false,
 }: IAllRestaurants) => {
 	const { isLoading, getRestaurantsList, restaurantsList } = useRestaurants()
-
 	const navigation = useNavigation<NavigationProp<StackRootParamList>>()
 
 	React.useEffect(() => {
-		getRestaurantsList()
+			getRestaurantsList()
 	}, [])
 
 	if (isLoading) {
-		return <ActivityIndicator />
+		return <YandexLoadingAnimation />
 	}
 	return (
 		<View
@@ -52,12 +54,9 @@ const AllRestaurants = ({
 				alignItems: 'center',
 			}}
 		>
+
 			{hasAllRestaurantsLabel ? (
-				<Text
-					style={styles.allRestaurantsLabelTextStyle}
-				>
-					Все рестораны
-				</Text>
+				<Text style={styles.allRestaurantsLabelTextStyle}>Все рестораны</Text>
 			) : null}
 			{restaurantsList?.map((elem) => {
 				return (

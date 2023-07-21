@@ -7,60 +7,62 @@ import SearchModalHandler from '../SearchModalHandler/SearchModalHandler'
 
 interface IHeaderAndSearchWIthChildren {
 	children: React.ReactNode
-	headerIsPinned?:boolean
+	headerIsPinned?: boolean
 }
-
 
 const HeaderAndSearchWIthChildren = ({
 	children = <View></View>,
-	headerIsPinned = false
+	headerIsPinned = false,
 }: IHeaderAndSearchWIthChildren) => {
 	const flatListRef = useRef<FlatList>(undefined as any)
 
 	const scrollY = useRef(new Animated.Value(0)).current
 
-
-const headerAndSearch = headerIsPinned
-	? []
-	: [
-			<Animated.View
-				style={{
-					...(headerIsPinned
-						? null
-						: {
-								transform: [
-									{
-										translateY: Animated.subtract(
-											verticalScale(60),
-											scrollY
-										).interpolate({
-											inputRange: [-120, 0],
-											outputRange: [-120, 0],
-											extrapolate: 'clamp',
-										}),
-									},
-								],
-						  }),
-				}}
-			>
-				<MainHeader />
-			</Animated.View>,
-			,
-			<SearchModalHandler scrollY={scrollY} />,
-	  ]
+	const headerAndSearch = headerIsPinned
+		? []
+		: [
+				<Animated.View
+					style={{
+						...(headerIsPinned
+							? null
+							: {
+									transform: [
+										{
+											translateY: Animated.subtract(
+												verticalScale(60),
+												scrollY
+											).interpolate({
+												inputRange: [-120, 0],
+												outputRange: [-120, 0],
+												extrapolate: 'clamp',
+											}),
+										},
+									],
+							  }),
+					}}
+				>
+					<MainHeader />
+				</Animated.View>,
+				,
+				<SearchModalHandler scrollY={scrollY} />,
+		  ]
 
 	return (
 		<Animated.FlatList
 			ref={flatListRef}
 			stickyHeaderIndices={[0]}
-      ListHeaderComponent={headerIsPinned ? () => {
-        return (
-					<>
-						<MainHeader />
-						<SearchModalHandler scrollY={scrollY} />
-					</>
-				)
-      } : undefined}
+			ListHeaderComponent={
+				headerIsPinned
+					? () => {
+							return (
+								<>
+									<MainHeader />
+									<SearchModalHandler scrollY={scrollY} />
+								</>
+							)
+					  }
+					: undefined
+			}
 			onScroll={Animated.event(
 				[
 					{

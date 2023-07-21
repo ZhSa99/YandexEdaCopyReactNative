@@ -1,5 +1,6 @@
 import {
 	Animated,
+	Button,
 	FlatList,
 	Image,
 	ImageBackground,
@@ -20,7 +21,11 @@ import {
 	textColor2,
 	textColorLightDark,
 } from '../../../utils/colors'
-import { IItemsList, IRestaurantInfo } from '../../../hooks/useRestaurants'
+import {
+	IDishesListInfo,
+	IItemsList,
+	IRestaurantInfo,
+} from '../../../hooks/useRestaurants'
 import { LinearGradient } from 'expo-linear-gradient'
 import CustomExpoIcon from '../../../customElements/CustomExpoIcon'
 import RestaurantDescription from './RestaurantDescription'
@@ -42,13 +47,11 @@ const ItemsList = ({
 	const [listInfo, setListInfo] = useState({ activeIndex: 0, offset: 0 })
 	const [itemModalVisible, setItemModalVisible] = useState({
 		visible: false,
-		itemInfo: null,
+		itemInfo: {} as IDishesListInfo | null,
 	})
 
-	const [tV, setTV] = useState(true)
-
-	const cateogries = Object.keys(dishesList.categoriesList)
-	const categoriesNamesRU = Object.values(dishesList.categoriesList)
+	const cateogries = Object.keys(dishesList?.categoriesList)
+	const categoriesNamesRU = Object.values(dishesList?.categoriesList)
 
 	const flatList1Ref = useRef<FlatList>(null)
 	const flatList2Ref = useRef<FlatList>(null)
@@ -132,7 +135,7 @@ const ItemsList = ({
 			}}
 		/>,
 		<View style={{ backgroundColor: mainBackgroundColor }}>
-			{categoriesNamesRU.map((item, index) => {
+			{categoriesNamesRU?.map((item, index) => {
 				return (
 					<View key={index} style={styles.categoryItemsContainer}>
 						<Text style={styles.categoryLabel}>{item}</Text>
@@ -146,7 +149,7 @@ const ItemsList = ({
 											style={styles.itemContainer}
 											onPress={() =>
 												setItemModalVisible((val) => ({
-													...val,
+													itemInfo: elem,
 													visible: !itemModalVisible.visible,
 												}))
 											}
@@ -318,6 +321,7 @@ const ItemsList = ({
 					return item
 				}}
 			/>
+
 			<ItemInfoModal
 				visible={itemModalVisible.visible}
 				setVisible={() =>
@@ -326,6 +330,7 @@ const ItemsList = ({
 						visible: !itemModalVisible.visible,
 					}))
 				}
+				itemInfo={itemModalVisible.itemInfo}
 			/>
 		</View>
 	)
