@@ -1,9 +1,10 @@
 import { Animated, Pressable, StyleSheet, Text, View } from 'react-native'
-import React, { useContext } from 'react'
+import React, { useContext, useRef } from 'react'
 import { Ionicons } from '@expo/vector-icons'
 import { verticalScale, scale } from 'react-native-size-matters'
-import { bottomTabColors, textColor1 } from '../../utils/colors'
+import { bottomTabColors, itemContainerColor, textColor1, textColor2 } from '../../utils/colors'
 import { ModalScreensContext } from '../../context/ModalScreensContext/ModalScreensContext'
+import Svg, { Circle } from 'react-native-svg'
 
 interface ISearchModalHandler {
 	scrollY: Animated.Value
@@ -13,23 +14,23 @@ const AnimatedIonicons = Animated.createAnimatedComponent(Ionicons)
 
 const SearchModalHandler = ({ scrollY }: ISearchModalHandler) => {
 	const { setSearchModalVisible } = useContext(ModalScreensContext)
+	const animatedRotateZ = useRef(new Animated.Value(0)).current
 
 	return (
 		<Animated.View
 			style={[
-				{	
+				{
 					width: '100%',
 					alignItems: 'center',
 					justifyContent: 'center',
 					alignSelf: 'center',
 					height: verticalScale(60),
-					// backgroundColor: 'red',
 					backgroundColor: bottomTabColors.sceneBackgroundColor,
 				},
 			]}
 		>
 			<Pressable onPress={setSearchModalVisible}>
-				<Animated.View 
+				<Animated.View
 					style={{
 						width: scrollY.interpolate({
 							inputRange: [-100, 0],
@@ -50,13 +51,56 @@ const SearchModalHandler = ({ scrollY }: ISearchModalHandler) => {
 						marginBottom: verticalScale(15),
 					}}
 				>
+					<Animated.View
+						style={[
+							{
+								position: 'absolute',
+								width: scale(48),
+								height: scale(48),
+								borderRadius: 40,
+								alignItems: 'center',
+								justifyContent: 'center',
+								alignSelf: 'center',
+							},
+							{
+								transform: [
+									{
+										rotateZ: scrollY.interpolate({
+											inputRange: [-100, 0],
+											outputRange: ['0deg', '180deg'],
+											extrapolate: 'clamp',
+										}),
+									},
+								],
+
+								opacity: scrollY.interpolate({
+									inputRange: [-100, 0],
+									outputRange: [1, 0],
+									extrapolate: 'clamp',
+								}),
+							},
+						]}
+					>
+						<Svg>
+							<Circle
+								cx={scale(24)}
+								cy={scale(24)}
+								r={scale(10)}
+								stroke={textColor2}
+								strokeWidth={scale(3)}
+								strokeDasharray={scale(15)}
+								strokeDashoffset={scale(21)}
+								strokeLinecap={'round'}
+							/>
+						</Svg>
+					</Animated.View>
 					<AnimatedIonicons
 						name="ios-search"
 						size={scale(28)}
 						color={textColor1}
 						style={{
 							opacity: scrollY.interpolate({
-								inputRange: [-100, 0],
+								inputRange: [-30, 0],
 								outputRange: [0, 1],
 								extrapolate: 'clamp',
 							}),
@@ -68,7 +112,7 @@ const SearchModalHandler = ({ scrollY }: ISearchModalHandler) => {
 							fontSize: scale(18),
 							left: scale(4),
 							opacity: scrollY.interpolate({
-								inputRange: [-100, 0],
+								inputRange: [-30, 0],
 								outputRange: [0, 1],
 								extrapolate: 'clamp',
 							}),
