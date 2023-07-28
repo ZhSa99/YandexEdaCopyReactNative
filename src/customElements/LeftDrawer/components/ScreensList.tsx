@@ -21,8 +21,8 @@ import CustomIcon from '../../CustomIcon'
 import { NavigationContext } from '../../../context/NavigationContext/NavigationContext'
 import { screenNames_RU } from '../../../utils/screenLabels'
 import * as WebBrowser from 'expo-web-browser'
-import { DrawerContext } from '../../../context/DrawerContext/DrawerContext'
 import { stackColors } from '../../../utils/colors'
+import { ScreensContext } from '../../../context/ScreensProvider/ScreensProvider'
 
 const stackNavigatorScreens: {
 	screenName: keyof StackRootParamList
@@ -71,7 +71,7 @@ const stackNavigatorScreens: {
 
 const ScreensList = () => {
 	const { navigateToScreen } = useContext(NavigationContext)
-	const { setDrawerIsOpen } = useContext(DrawerContext)
+	const { setDrawerIsOpen } = useContext(ScreensContext)
 
 	return (
 		<View style={{ width: '100%', marginTop: verticalScale(30) }}>

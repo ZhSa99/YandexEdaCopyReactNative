@@ -1,6 +1,6 @@
 import { Modal, StyleSheet, Text, View } from 'react-native'
 import React, { useContext } from 'react'
-import { ModalScreensContext } from '../../context/ModalScreensContext/ModalScreensContext'
+import { ScreensContext } from '../../context/ScreensProvider/ScreensProvider'
 import { verticalScale } from 'react-native-size-matters'
 import { basketModalScreenColors } from '../../utils/colors'
 import BasketModal from './components/BasketModal/BasketModal'
@@ -8,7 +8,7 @@ import SearchModal from './components/SearchModal/SearchModal'
 
 const ModalScreens = () => {
 	const { basketModalVisible, setBasketModalVisible, searchModalVisible, setSearchModalVisible } =
-		useContext(ModalScreensContext)
+		useContext(ScreensContext)
 	return (
 		<>
 			{basketModalVisible ? (

@@ -2,16 +2,15 @@ import { Animated, Pressable, SafeAreaView, StyleSheet } from 'react-native'
 import React, { useContext, useEffect, useRef } from 'react'
 import { scale } from 'react-native-size-matters'
 import { stackColors } from '../../utils/colors'
-import { DrawerContext } from '../../context/DrawerContext/DrawerContext'
 import YandexEdaTitleIcon from '../YandexEdaTitleIcon'
 import ScreensList from './components/ScreensList'
-import { NavigationContext } from '../../context/NavigationContext/NavigationContext'
 import TechSupportButton from './components/TechSupportButton'
+import { ScreensContext } from '../../context/ScreensProvider/ScreensProvider'
 
 const AnimatedPressable = Animated.createAnimatedComponent(Pressable)
 
 const LeftDrawer = React.forwardRef((props, ref) => {
-	const { setDrawerIsOpen, drawerIsOpen } = useContext(DrawerContext)
+	const { setDrawerIsOpen, drawerIsOpen } = useContext(ScreensContext)
 	const scrollX = useRef(new Animated.Value(0)).current
 	const zIndex = useRef(new Animated.Value(0)).current
 

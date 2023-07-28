@@ -1,7 +1,6 @@
 import {
 	Animated,
 	Pressable,
-	SafeAreaView,
 	StyleSheet,
 	Text,
 	View,
@@ -15,22 +14,17 @@ import {
 	YANDEX_BONUS_GRADIENT_COLORS,
 	bottomTabColors,
 	stackColors,
-	textColor1,
 } from '../../utils/colors'
-import { AntDesign, Ionicons } from '@expo/vector-icons'
-import { DrawerContext } from '../../context/DrawerContext/DrawerContext'
-import { ModalScreensContext } from '../../context/ModalScreensContext/ModalScreensContext'
+import { AntDesign } from '@expo/vector-icons'
+import { ScreensContext } from '../../context/ScreensProvider/ScreensProvider'
 
-interface IMainHeader {
-	scrollY: Animated.Value
-}
 
 const MainHeader = () => {
-	const { setDrawerIsOpen } = useContext(DrawerContext)
+	const { setDrawerIsOpen } = useContext(ScreensContext)
 	
 	return (
 		<View>
-			<Animated.View
+			<View
 				style={{
 					flexDirection: 'row',
 					alignItems: 'center',
@@ -122,7 +116,7 @@ const MainHeader = () => {
 						}}
 					/>
 				</Pressable>
-			</Animated.View>
+			</View>
 		</View>
 	)
 }

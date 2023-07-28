@@ -5,14 +5,14 @@ import CustomIcon from '../CustomIcon'
 import { BasketScreen_ICON } from '../../utils/iconsPaths'
 import { buttonColors } from '../../utils/colors'
 import { tabBarLabel } from '../../utils/getUIElems'
-import { ModalScreensContext } from '../../context/ModalScreensContext/ModalScreensContext'
+import { ScreensContext } from '../../context/ScreensProvider/ScreensProvider'
 
 interface IBasketModalHandler {
   style: ViewStyle
 }
 
 const BasketModalHandler = ({ style }: IBasketModalHandler) => {
-	const {setBasketModalVisible} = useContext(ModalScreensContext)
+	const {setBasketModalVisible} = useContext(ScreensContext)
 	return (
 		<Pressable
 			style={{

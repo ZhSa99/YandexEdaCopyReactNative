@@ -3,10 +3,9 @@ import { Dimensions, View } from 'react-native'
 import 'react-native-gesture-handler'
 
 import LeftDrawer from './src/customElements/LeftDrawer/LeftDrawer'
-import { DrawerProvider } from './src/context/DrawerContext/DrawerContext'
 import AppNavigation from './src/navigation/AppNavigation/AppNavigation'
 import { NavigationProvider } from './src/context/NavigationContext/NavigationContext'
-import { ModalScreensProvider } from './src/context/ModalScreensContext/ModalScreensContext'
+import { ScreensProvider } from './src/context/ScreensProvider/ScreensProvider'
 import ModalScreens from './src/customElements/ModalScreens/ModalScreens'
 import { useEffect } from 'react'
 import { login } from './src/firebase/firebaseConfig'
@@ -21,20 +20,18 @@ export default function App() {
 		aaa()
 	}, [])
 	return (
-		<DrawerProvider>
+		<ScreensProvider>
 			<NavigationProvider>
-				<ModalScreensProvider>
-					<View style={{ width, height, flexDirection: 'row' }}>
-						<StatusBar style="light" />
+				<View style={{ width, height, flexDirection: 'row' }}>
+					<StatusBar style="light" />
 
-						<LeftDrawer />
+					<LeftDrawer />
 
-						<AppNavigation />
+					<AppNavigation />
 
-						<ModalScreens />
-					</View>
-				</ModalScreensProvider>
+					<ModalScreens />
+				</View>
 			</NavigationProvider>
-		</DrawerProvider>
+		</ScreensProvider>
 	)
 }

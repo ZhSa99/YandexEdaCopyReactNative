@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet } from 'react-native'
 import React from 'react'
 import { createStackNavigator } from '@react-navigation/stack'
 import { StackRootParamList } from '../types'
@@ -10,9 +10,7 @@ import AboutServiceScreen from '../../screens/AboutServiceScreen/AboutServiceScr
 import BecomeCourierScreen from '../../screens/BecomeCourierScreen/BecomeCourierScreen'
 import FoodForBusinessScreen from '../../screens/FoodForBusinessScreen/FoodForBusinessScreen'
 import BottomTabNavigation from '../BottomTabNavigation/BottomTabNavigation'
-import { useNavigation, useRoute } from '@react-navigation/native'
 import RestaurantInfoScreen from '../../screens/RestaurantInfoScreen/RestaurantInfoScreen'
-import { ModalScreensProvider } from '../../context/ModalScreensContext/ModalScreensContext'
 
 const Stack = createStackNavigator<StackRootParamList>()
 

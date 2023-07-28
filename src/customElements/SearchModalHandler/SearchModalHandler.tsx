@@ -3,7 +3,7 @@ import React, { useContext, useRef } from 'react'
 import { Ionicons } from '@expo/vector-icons'
 import { verticalScale, scale } from 'react-native-size-matters'
 import { bottomTabColors, itemContainerColor, textColor1, textColor2 } from '../../utils/colors'
-import { ModalScreensContext } from '../../context/ModalScreensContext/ModalScreensContext'
+import { ScreensContext } from '../../context/ScreensProvider/ScreensProvider'
 import Svg, { Circle } from 'react-native-svg'
 
 interface ISearchModalHandler {
@@ -13,7 +13,7 @@ interface ISearchModalHandler {
 const AnimatedIonicons = Animated.createAnimatedComponent(Ionicons)
 
 const SearchModalHandler = ({ scrollY }: ISearchModalHandler) => {
-	const { setSearchModalVisible } = useContext(ModalScreensContext)
+	const { setSearchModalVisible } = useContext(ScreensContext)
 	const animatedRotateZ = useRef(new Animated.Value(0)).current
 
 	return (

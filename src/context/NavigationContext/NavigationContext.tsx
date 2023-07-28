@@ -5,7 +5,8 @@ import {
 	createNavigationContainerRef,
 } from '@react-navigation/native'
 import { StackRootParamList } from '../../navigation/types'
-import { DrawerContext } from '../DrawerContext/DrawerContext'
+import { ScreensContext } from '../ScreensProvider/ScreensProvider'
+
 
 interface INavigationContext {
 	navigationRef: NavigationContainerRefWithCurrent<StackRootParamList>
@@ -17,7 +18,7 @@ export const NavigationContext = createContext({} as INavigationContext)
 export const NavigationProvider: React.FC<{ children: React.ReactNode }> = ({
 	children,
 }) => {
-	const {setDrawerIsOpen} = useContext(DrawerContext)
+	const { setDrawerIsOpen } = useContext(ScreensContext)
 
 	const navigationRef = createNavigationContainerRef<StackRootParamList>()
 

@@ -1,17 +1,14 @@
 import { Animated, StyleSheet } from 'react-native'
-import React, { ForwardedRef, useContext, useEffect, useRef } from 'react'
-import { NavigationContainer, NavigationContainerRef } from '@react-navigation/native'
+import React, { useContext, useEffect, useRef } from 'react'
+import { NavigationContainer } from '@react-navigation/native'
 import StackNavigation from '../StackNavigation/StackNavigation'
 import { scale } from 'react-native-size-matters'
-import { DrawerContext } from '../../context/DrawerContext/DrawerContext'
-import { StackRootParamList } from '../types'
+
 import { NavigationContext } from '../../context/NavigationContext/NavigationContext'
-import MainHeader from '../../customElements/MainHeader/MainHeader'
-import SearchModalHandler from '../../customElements/SearchModalHandler/SearchModalHandler'
-import { ModalScreensProvider } from '../../context/ModalScreensContext/ModalScreensContext'
+import { ScreensContext } from '../../context/ScreensProvider/ScreensProvider'
 
 const AppNavigation = () => {
-	const { drawerIsOpen } = useContext(DrawerContext)
+	const { drawerIsOpen } = useContext(ScreensContext)
 	const {navigationRef} = useContext(NavigationContext)
 
 	const scrollX = useRef(new Animated.Value(0)).current
