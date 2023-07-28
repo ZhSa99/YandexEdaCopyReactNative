@@ -1,8 +1,8 @@
-import { Animated, StyleSheet, Text, View } from 'react-native'
+import { Animated, StyleSheet, View } from 'react-native'
 import React, { useRef } from 'react'
 import { Circle, Svg } from 'react-native-svg'
 import { scale } from 'react-native-size-matters'
-import { itemContainerColor, textColor1, textColor2 } from '../utils/colors'
+import { itemContainerColor, mainBackgroundColor, textColor2 } from '../utils/colors'
 
 const YandexLoadingAnimation = () => {
 	const animatedRotateZ = useRef(new Animated.Value(0)).current
@@ -28,7 +28,7 @@ const YandexLoadingAnimation = () => {
 		rotateAnimation()
 	}, [])
 	return (
-		<View style={{ height: '100%', width: '100%', alignItems: 'center' }}>
+		<View style={{ height: '100%', width: '100%', alignItems: 'center', backgroundColor: mainBackgroundColor }}>
 			<Animated.View
 				style={[
 					{
@@ -70,5 +70,3 @@ const YandexLoadingAnimation = () => {
 }
 
 export default YandexLoadingAnimation
-
-const styles = StyleSheet.create({})

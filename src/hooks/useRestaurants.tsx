@@ -22,7 +22,7 @@ export interface IDishesListInfo {
 	type: string
 }
 
-export interface IItemsList {
+export interface IDishesList {
 	itemsList: IDishesListInfo[]
 	categoriesList: object
 }
@@ -33,7 +33,7 @@ const useRestaurants = () => {
 	const [restaurantsList, setRestaurantsList] = React.useState(
 		{} as IRestaurantInfo[]
 	)
-	const [dishesList, setDishesList] = React.useState<IItemsList>({
+	const [dishesList, setDishesList] = React.useState<IDishesList>({
 		itemsList: [],
 		categoriesList: [],
 	})
