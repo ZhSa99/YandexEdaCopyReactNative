@@ -11,12 +11,14 @@ import { getRatingInfo } from '../../../customElements/RestaurantRatingInfo'
 const RestaurantDescription = ({
 	restaurantInfo,
 	interpolate,
+
 }: {
 	restaurantInfo: IRestaurantInfo
 	interpolate: (
 		inputRange: number[],
 		outputRange: string[] | number[]
 	) => Animated.AnimatedInterpolation<string | number>
+
 }) => {
 	const ratingInfo = getRatingInfo(
 		restaurantInfo.rating,
@@ -28,7 +30,9 @@ const RestaurantDescription = ({
 				paddingTop: verticalScale(60),
 				paddingBottom: verticalScale(15),
 				left: scale(10),
-				opacity: interpolate([verticalScale(50), verticalScale(100)], [1, 0])
+				opacity: interpolate([verticalScale(50), verticalScale(100)], [1, 0]),
+
+				zIndex: 2,
 			}}
 		>
 			{/* RESTAURANT NAME LABEL */}
