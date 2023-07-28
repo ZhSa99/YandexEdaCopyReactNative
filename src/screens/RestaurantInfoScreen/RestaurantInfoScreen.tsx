@@ -1,10 +1,15 @@
-import { Button, SafeAreaView, View } from 'react-native'
-import React from 'react'
-import useRestaurants, { IRestaurantInfo } from '../../hooks/useRestaurants'
-import { ActivityIndicator } from 'react-native'
+import { Animated, View } from 'react-native'
+import React, { useState } from 'react'
+import useRestaurants, {
+	IDishesListInfo,
+	IRestaurantInfo,
+} from '../../hooks/useRestaurants'
 import { mainBackgroundColor } from '../../utils/colors'
 import ItemsList from './components/ItemsList'
-import YandexLoadingAnimation from '../../customElements/YandexLoadingAnimation'
+import { verticalScale } from 'react-native-size-matters'
+import ItemInfoModal from './components/ItemInfoModal'
+import HeaderButtons from './components/HeaderButtons'
+import RestaurantImage from './components/RestaurantImage'
 
 const RestaurantInfoScreen = ({
 	route,
@@ -16,20 +21,73 @@ const RestaurantInfoScreen = ({
 	const { getDishesListFromRestaurant, isLoading, dishesList } =
 		useRestaurants()
 
+	const scrollY = React.useRef(new Animated.Value(0)).current
+
+	const [itemModalVisible, setItemModalVisible] = useState({
+		visible: false,
+		itemInfo: {} as IDishesListInfo | null,
+	})
+
+	// --------------UTILS----------------
+	// -----------------------------------
+
+	const getHandledInterpolate = (
+		inputRange: number[],
+		outputRange: string[] | number[]
+	) => {
+		const handledInputRange = inputRange?.map((elem) => verticalScale(elem))
+		return scrollY.interpolate({
+			inputRange: handledInputRange,
+			outputRange,
+			extrapolate: 'clamp',
+		})
+	}
+
 	React.useEffect(() => {
 		getDishesListFromRestaurant(route.params.restaurantInfo.id)
 	}, [])
 
 	return (
 		<View style={{ backgroundColor: mainBackgroundColor, height: '100%' }}>
-			
-			{isLoading ? (
-				<SafeAreaView>
-					<YandexLoadingAnimation />
-				</SafeAreaView>
-			) : (
-				<ItemsList dishesList={dishesList} restaurantInfo={restaurantInfo} />
-			)}
+			{/* ---------------BUTTONS----------------- */}
+			{/* --------------------------------------- */}
+			<HeaderButtons
+				restaurantName={restaurantInfo.name}
+				getHandledInterpolate={getHandledInterpolate}
+			/>
+			{/* --------------------------------------- */}
+
+			{/* -----------RESTAURANT IMAGE------------ */}
+			{/* --------------------------------------- */}
+			<RestaurantImage
+				getHandledInterpolate={getHandledInterpolate}
+				iconPath={restaurantInfo.iconPath}
+			/>
+			{/* --------------------------------------- */}
+
+			{/* -----------ITEMS LIST------------------ */}
+			{/* --------------------------------------- */}
+
+			<ItemsList
+				getHandledInterpolate={getHandledInterpolate}
+				scrollY={scrollY}
+				dishesList={dishesList}
+				restaurantInfo={restaurantInfo}
+				isLoading={isLoading}
+			/>
+
+			{/* --------------------------------------- */}
+
+			<ItemInfoModal
+				visible={itemModalVisible.visible}
+				setVisible={() =>
+					setItemModalVisible((val) => ({
+						...val,
+						visible: !itemModalVisible.visible,
+					}))
+				}
+				itemInfo={itemModalVisible.itemInfo}
+			/>
 		</View>
 	)
 }
