@@ -26,4 +26,3 @@ export const DrawerProvider = ({ children }: IDrawerProvider) => {
 	)
 }
 
-const styles = StyleSheet.create({})
